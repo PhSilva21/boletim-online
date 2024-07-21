@@ -1,6 +1,5 @@
 package com.bandeira.school_report_online.model;
 
-import com.bandeira.school_report_online.dtos.County;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

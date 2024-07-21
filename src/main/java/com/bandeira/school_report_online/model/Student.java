@@ -25,7 +25,7 @@ public class Student {
     private String name;
 
 
-    private String county;
+    private County county;
 
 
     private School school;

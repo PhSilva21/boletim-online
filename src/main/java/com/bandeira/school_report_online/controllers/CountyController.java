@@ -1,8 +1,7 @@
 package com.bandeira.school_report_online.controllers;
 
-import com.bandeira.school_report_online.dtos.StudentCreateRequest;
-import com.bandeira.school_report_online.dtos.StudentCreateResponse;
-import com.bandeira.school_report_online.services.StudentService;
+import com.bandeira.school_report_online.dtos.CountyCreateRequest;
+import com.bandeira.school_report_online.services.CountyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,17 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("student")
-public class StudentController {
-
+@RequestMapping("county")
+public class CountyController {
 
     @Autowired
-    private StudentService studentService;
-
+    private CountyService countyService;
 
     @PostMapping
-    public ResponseEntity<StudentCreateResponse> createStudent(@RequestBody StudentCreateRequest student){
-        var response = studentService.createStudent(student);
+    public ResponseEntity<CountyCreateRequest> createCounty(@RequestBody CountyCreateRequest countyCreateRequest){
+        var response = countyService.createCounty(countyCreateRequest);
         return ResponseEntity.ok().body(response);
     }
+
 }

@@ -1,7 +1,5 @@
 package com.bandeira.school_report_online.dtos;
 
-import lombok.Setter;
-
 
 public record StudentCreateRequest(
 
@@ -11,6 +9,6 @@ public record StudentCreateRequest(
         String schoolName,
 
 
-        String county
+        String countyName
 ) {
 }

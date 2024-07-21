@@ -7,46 +7,20 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Document
-public class SchoolReport {
+public class County {
+
 
     @Id
     private String id;
 
-    private Double absences;
+
+    private String name;
 
 
-    private Student student;
-
-
-    private Double portuguese;
-
-
-    private Double mathematics;
-
-
-    private Double history;
-
-
-    private Double science;
-
-
-    private Double english;
-
-
-    private Double art;
-
-
-    private Double philosophy;
-
-
-    private Double biology;
-
-
-
+    private String uf;
 }
