@@ -7,6 +7,8 @@ public class SchoolReport {
     @Id
     private String id;
 
+    private Double absences;
+
 
     private Student student;
 

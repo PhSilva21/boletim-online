@@ -1,8 +1,16 @@
 package com.bandeira.school_report_online.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Document
 public class Student {
 
@@ -11,16 +19,16 @@ public class Student {
     private String id;
 
 
-    private String StudentRegistration;
+    private String studentRegistration;
 
 
     private String name;
 
 
+    private String county;
+
+
     private School school;
-
-
-    private Integer absences;
 
 
 
