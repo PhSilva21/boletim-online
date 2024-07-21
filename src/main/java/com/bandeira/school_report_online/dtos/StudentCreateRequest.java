@@ -6,6 +6,15 @@ public record StudentCreateRequest(
         String name,
 
 
+        String cpf,
+
+
+        String responsible,
+
+
+        String celResponsible,
+
+
         String schoolName,
 
 

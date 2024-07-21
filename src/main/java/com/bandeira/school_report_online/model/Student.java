@@ -25,6 +25,15 @@ public class Student {
     private String name;
 
 
+    private String cpf;
+
+
+    private String responsible;
+
+
+    private String celResponsible;
+
+
     private County county;
 
 
