@@ -35,7 +35,7 @@ public class Student {
     private String responsible;
 
 
-    private String celResponsible;
+    private Long celResponsible;
 
 
     private County county;

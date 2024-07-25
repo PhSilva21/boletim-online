@@ -1,7 +1,6 @@
 package com.bandeira.school_report_online.services;
 
-import com.bandeira.school_report_online.dtos.StudentCreateRequest;
-import com.bandeira.school_report_online.dtos.StudentCreateResponse;
+import com.bandeira.school_report_online.dtos.*;
 import com.bandeira.school_report_online.exceptions.CountyNotFound;
 import com.bandeira.school_report_online.exceptions.SchoolNotFound;
 import com.bandeira.school_report_online.exceptions.StudentNotFound;
@@ -65,6 +64,7 @@ public class StudentService {
         );
     }
 
+
     public List<Student> findByCounty(String countyName) {
         var county = countyRepository.findByName(countyName);
 
@@ -74,11 +74,6 @@ public class StudentService {
 
         return studentRepository.findAll().stream()
                 .filter(s -> s.getCounty().getName().equals(county.getName())).collect(Collectors.toList());
-    }
-
-
-    public Student findById(String id){
-       return studentRepository.findById(id).orElseThrow(StudentNotFound::new);
     }
 
 
@@ -93,21 +88,28 @@ public class StudentService {
                 .filter(s -> s.getSchool().getName().equals(school.getName())).collect(Collectors.toList());
     }
 
-    public void updateStudentResponsible(String id, String nameResponsible, String cel){
 
-        var student = studentRepository.findById(id).orElseThrow(StudentNotFound::new);
+    public Student findById(String id){
+        return studentRepository.findById(id).orElseThrow(StudentNotFound::new);
+    }
 
-        student.setResponsible(nameResponsible);
-        student.setCelResponsible(cel);
+
+    public void updateResponsible(UpdateResponsibleStudent updateResponsibleStudent){
+
+        var student = studentRepository.findById(updateResponsibleStudent.id()).orElseThrow(StudentNotFound::new);
+
+        student.setResponsible(updateResponsibleStudent.nameResponsible());
+        student.setCelResponsible(updateResponsibleStudent.cel());
 
         studentRepository.save(student);
     }
 
-    public void updateStudentCounty(String id, String countyName){
 
-        var student = studentRepository.findById(id).orElseThrow(StudentNotFound::new);
+    public void updateCounty(UpdateStudentCounty updateStudentCounty){
 
-        var county = countyRepository.findByName(countyName);
+        var student = studentRepository.findById(updateStudentCounty.id()).orElseThrow(StudentNotFound::new);
+
+        var county = countyRepository.findByName(updateStudentCounty.nameCounty());
 
         if(county == null){
             throw new CountyNotFound();
@@ -118,11 +120,12 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-    public void updateStudentSchool(String id, String schoolName){
 
-        var student = studentRepository.findById(id).orElseThrow(StudentNotFound::new);
+    public void updateSchool(UpdateStudentSchool updateStudentSchool){
 
-        var county = countyRepository.findByName(schoolName);
+        var student = studentRepository.findById(updateStudentSchool.id()).orElseThrow(StudentNotFound::new);
+
+        var county = countyRepository.findByName(updateStudentSchool.nameSchool());
 
         if(county == null){
             throw new CountyNotFound();

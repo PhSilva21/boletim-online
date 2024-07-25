@@ -1,9 +1,9 @@
 package com.bandeira.school_report_online.controllers;
 
-import com.bandeira.school_report_online.dtos.StudentCreateRequest;
-import com.bandeira.school_report_online.dtos.StudentCreateResponse;
+import com.bandeira.school_report_online.dtos.*;
 import com.bandeira.school_report_online.model.Student;
 import com.bandeira.school_report_online.services.StudentService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
@@ -26,11 +26,14 @@ public class StudentController {
         return ResponseEntity.ok().body(response);
     }
 
+
     @GetMapping("/findByCounty")
     public ResponseEntity<List<Student>> findByCounty(@RequestParam @Param("countyName") String countyName){
         var response = studentService.findByCounty(countyName);
         return ResponseEntity.ok().body(response);
     }
+
+
 
     @GetMapping("/findBySchool")
     public ResponseEntity<List<Student>> findBySchool(@RequestParam ("schoolName") String schoolName){
@@ -38,9 +41,33 @@ public class StudentController {
         return ResponseEntity.ok().body(response);
     }
 
+
+
     @GetMapping("/findById/{id}")
     public ResponseEntity<Student> findById(@PathVariable String id){
         var response = studentService.findById(id);
         return ResponseEntity.ok().body(response);
     }
+
+
+    @PostMapping("/updateResponsible")
+    public ResponseEntity<Void> updateResponsible(UpdateResponsibleStudent updateResponsibleStudent){
+        studentService.updateResponsible(updateResponsibleStudent);
+        return ResponseEntity.ok().build();
+    }
+
+
+    @PostMapping("/updateCounty")
+    public ResponseEntity<Void> updateCounty(UpdateStudentCounty updateStudentCounty) {
+        studentService.updateCounty(updateStudentCounty);
+        return ResponseEntity.ok().build();
+    }
+
+
+    @PostMapping("/updateSchool")
+    public ResponseEntity<Void> updateSchool(UpdateStudentSchool updateStudentSchool) {
+        studentService.updateSchool(updateStudentSchool);
+        return ResponseEntity.ok().build();
+    }
+    
 }
