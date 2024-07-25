@@ -23,6 +23,7 @@ import java.util.UUID;
 @RequestMapping("/auth")
 public class AuthenticationController {
 
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -31,6 +32,7 @@ public class AuthenticationController {
 
     @Autowired
     private TokenService tokenService;
+
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid UserRequest userRequest){
@@ -42,9 +44,10 @@ public class AuthenticationController {
         return ResponseEntity.ok(new LoginResponse(token));
     }
 
+
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid RegisterDTO registerDTO){
-        if(this.repository.findByUsername(registerDTO.email()) != null) return ResponseEntity.badRequest().build();
+        if(this.repository.findByEmail(registerDTO.email()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
         User newUser = new User(UUID.randomUUID().toString() ,registerDTO.email(), encryptedPassword, registerDTO.userRole());

@@ -1,11 +1,15 @@
 package com.bandeira.school_report_online.services;
 
+import com.bandeira.school_report_online.dtos.EnrollStudent;
 import com.bandeira.school_report_online.dtos.SchoolCreateRequest;
 import com.bandeira.school_report_online.dtos.StudentCreateRequest;
 import com.bandeira.school_report_online.exceptions.CountyNotFound;
+import com.bandeira.school_report_online.exceptions.SchoolNotFound;
+import com.bandeira.school_report_online.exceptions.StudentNotFound;
 import com.bandeira.school_report_online.model.School;
 import com.bandeira.school_report_online.repositories.CountyRepository;
 import com.bandeira.school_report_online.repositories.SchoolRepository;
+import com.bandeira.school_report_online.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +23,10 @@ public class SchoolService {
 
     @Autowired
     private CountyRepository countyRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
 
 
     public SchoolCreateRequest createSchool(SchoolCreateRequest schoolCreateRequest){
@@ -38,4 +46,6 @@ public class SchoolService {
 
         return schoolCreateRequest;
     }
+
+    
 }

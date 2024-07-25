@@ -54,6 +54,7 @@ public class StudentService {
                     school
             );
 
+
         studentRepository.save(student);
 
         return new StudentCreateResponse(
@@ -74,6 +75,12 @@ public class StudentService {
         return studentRepository.findAll().stream()
                 .filter(s -> s.getCounty().getName().equals(county.getName())).collect(Collectors.toList());
     }
+
+
+    public Student findById(String id){
+       return studentRepository.findById(id).orElseThrow(StudentNotFound::new);
+    }
+
 
     public List<Student> findBySchool(String schoolName) {
         var school = schoolRepository.findByName(schoolName);
