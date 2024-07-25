@@ -51,6 +51,7 @@ public class SchoolService {
         return schoolCreateRequest;
     }
 
+
     public String enrollStudent(EnrollStudent enrollStudent){
         var student = studentRepository.findByStudentRegistration(enrollStudent.studentRegistration());
 

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -29,4 +29,11 @@ public class County {
 
 
     private List<School> schools = new ArrayList<>();
+
+
+    public County(String id, String name, String uf) {
+        this.id = id;
+        this.name = name;
+        this.uf = uf;
+    }
 }

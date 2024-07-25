@@ -1,6 +1,7 @@
 package com.bandeira.school_report_online.services;
 
 import com.bandeira.school_report_online.dtos.CountyCreateRequest;
+import com.bandeira.school_report_online.exceptions.CountyNotFound;
 import com.bandeira.school_report_online.model.County;
 import com.bandeira.school_report_online.repositories.CountyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,12 @@ public class CountyService {
 
         return countyCreateRequest;
     }
+
+
+    private void deleteById(String id){
+        var county = countyRepository.findById(id).orElseThrow(CountyNotFound::new);
+
+        countyRepository.deleteById(id);
+    }
+
 }
