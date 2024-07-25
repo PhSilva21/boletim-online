@@ -47,5 +47,28 @@ public class SchoolService {
         return schoolCreateRequest;
     }
 
-    
+    public String enrollStudent(EnrollStudent enrollStudent){
+        var student = studentRepository.findByStudentRegistration(enrollStudent.studentRegistration());
+
+        if(student == null){
+            throw new StudentNotFound();
+        }
+
+        var school = schoolRepository.findByName(enrollStudent.schoolName());
+
+        if(school == null){
+            throw new SchoolNotFound();
+        }
+
+        student.setSchool(school);
+
+        school.getStudents().add(student);
+
+        studentRepository.save(student);
+
+        schoolRepository.save(school);
+
+        return "Student successfully enrolled";
+    }
+
 }
