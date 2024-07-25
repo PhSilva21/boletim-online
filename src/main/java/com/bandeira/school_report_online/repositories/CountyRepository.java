@@ -8,4 +8,5 @@ public interface CountyRepository extends MongoRepository<County, String> {
 
     @Query
     County findByName(String name);
+
 }

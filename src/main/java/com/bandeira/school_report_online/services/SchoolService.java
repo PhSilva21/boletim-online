@@ -2,8 +2,10 @@ package com.bandeira.school_report_online.services;
 
 import com.bandeira.school_report_online.dtos.EnrollStudent;
 import com.bandeira.school_report_online.dtos.SchoolCreateRequest;
+import com.bandeira.school_report_online.dtos.SchoolUpdateDTO;
 import com.bandeira.school_report_online.dtos.StudentCreateRequest;
 import com.bandeira.school_report_online.exceptions.CountyNotFound;
+import com.bandeira.school_report_online.exceptions.SchoolEnrollmentNotFound;
 import com.bandeira.school_report_online.exceptions.SchoolNotFound;
 import com.bandeira.school_report_online.exceptions.StudentNotFound;
 import com.bandeira.school_report_online.model.School;
@@ -13,7 +15,9 @@ import com.bandeira.school_report_online.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class SchoolService {
@@ -69,6 +73,45 @@ public class SchoolService {
         schoolRepository.save(school);
 
         return "Student successfully enrolled";
+    }
+
+
+    private void updateSchool(SchoolUpdateDTO schoolUpdateDTO) {
+        var school = schoolRepository.findById(schoolUpdateDTO.id()).orElseThrow(SchoolNotFound::new);
+
+        if (schoolUpdateDTO.name() != null) {
+            school.setName(schoolUpdateDTO.name());
+        }
+
+        if (schoolUpdateDTO.nameCounty() != null) {
+            school.setCounty(countyRepository.findByName(schoolUpdateDTO.name()));
+        }
+    }
+
+
+    private void deleteById(String id){
+        var school = schoolRepository.findById(id).orElseThrow(SchoolEnrollmentNotFound::new);
+
+        schoolRepository.deleteById(id);
+    }
+
+
+    private School findById(String id) {
+        return schoolRepository.findById(id).orElseThrow(SchoolEnrollmentNotFound::new);
+    }
+
+
+    public List<School> findByCounty(String countyName){
+        var county = countyRepository.findByName(countyName);
+
+        return county.getSchools().stream().filter(
+                s -> s.getCounty().equals(county)).collect(Collectors.toList());
+    }
+
+
+
+    private School findByName(String name){
+        return schoolRepository.findByName(name);
     }
 
 }
