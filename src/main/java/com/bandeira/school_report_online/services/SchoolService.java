@@ -77,7 +77,7 @@ public class SchoolService {
     }
 
 
-    private void updateSchool(SchoolUpdateDTO schoolUpdateDTO) {
+    public void updateSchool(SchoolUpdateDTO schoolUpdateDTO) {
         var school = schoolRepository.findById(schoolUpdateDTO.id()).orElseThrow(SchoolNotFound::new);
 
         if (schoolUpdateDTO.name() != null) {
@@ -111,7 +111,7 @@ public class SchoolService {
 
 
 
-    private School findByName(String name){
+    public School findByName(String name){
         return schoolRepository.findByName(name);
     }
 

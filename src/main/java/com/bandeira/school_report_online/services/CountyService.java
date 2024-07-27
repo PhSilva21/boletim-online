@@ -30,7 +30,7 @@ public class CountyService {
     }
 
 
-    private void deleteById(String id){
+    public void deleteById(String id){
         var county = countyRepository.findById(id).orElseThrow(CountyNotFound::new);
 
         countyRepository.deleteById(id);

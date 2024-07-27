@@ -69,5 +69,5 @@ public class StudentController {
         studentService.updateSchool(updateStudentSchool);
         return ResponseEntity.ok().build();
     }
-    
+
 }
