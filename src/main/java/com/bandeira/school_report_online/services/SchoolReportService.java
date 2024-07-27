@@ -10,7 +10,6 @@ import com.bandeira.school_report_online.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Collectors;
 
 @Service
 public class SchoolReportService {
@@ -38,7 +37,7 @@ public class SchoolReportService {
 
 
 
-    public SchoolReport updateSchoolRepository(UpdateSchoolReport updateSchoolReport){
+    public SchoolReport updateSchoolReport(UpdateSchoolReport updateSchoolReport){
 
         var schoolReport = findByStudent(new FindBySchoolReportDTO(updateSchoolReport.StudentRegistration()
                 ,updateSchoolReport.year()));

@@ -1,6 +1,7 @@
 package com.bandeira.school_report_online.services;
 
 import com.bandeira.school_report_online.dtos.SchoolEnrollmentRequest;
+import com.bandeira.school_report_online.dtos.UpdateSchoolEnrollment;
 import com.bandeira.school_report_online.exceptions.SchoolEnrollmentNotFound;
 import com.bandeira.school_report_online.exceptions.SchoolNotFound;
 import com.bandeira.school_report_online.exceptions.SchoolWithoutVacancies;
@@ -87,14 +88,14 @@ public class SchoolEnrollmentService {
     }
 
 
-    public void updateSchool(String number, School school) {
-        var schoolEnrollment = schoolEnrollmentRepository.findByProtocol(number);
+    public void updateSchool(UpdateSchoolEnrollment updateSchoolEnrollment) {
+        var schoolEnrollment = schoolEnrollmentRepository.findByProtocol(updateSchoolEnrollment.protocol());
 
-        if(number == null) {
+        if(schoolEnrollment == null) {
             throw new SchoolEnrollmentNotFound();
         }
 
-        schoolRepository.findByName(school.getName());
+        var school = schoolRepository.findByName(updateSchoolEnrollment.nameSchool());
 
         if(school == null) {
             throw new SchoolNotFound();
@@ -102,6 +103,8 @@ public class SchoolEnrollmentService {
 
         schoolEnrollment.setSchool(school);
     }
+
+
 
     public void deleteById(String id) {
 
