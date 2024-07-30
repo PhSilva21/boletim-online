@@ -51,13 +51,11 @@ public class SchoolEnrollmentService {
             throw new SchoolWithoutVacancies();
         }
 
-        var randomString = RandomString.generateRandomString(8).toUpperCase();
-
         SchoolEnrollment schoolEnrollment = new SchoolEnrollment(
                 UUID.randomUUID().toString(),
                 student,
                 school,
-                randomString.toUpperCase(),
+                RandomString.generateRandomString(8).toUpperCase(),
                 StatusSchoolEnrollment.SENT);
 
         schoolEnrollmentRepository.save(schoolEnrollment);
