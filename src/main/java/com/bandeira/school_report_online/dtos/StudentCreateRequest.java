@@ -12,7 +12,7 @@ public record StudentCreateRequest(
         String responsible,
 
 
-        String celResponsible,
+        Long celResponsible,
 
 
         String schoolName,

@@ -15,7 +15,7 @@ public class SchoolEnrollmentController {
 
 
     @Autowired
-    private SchoolEnrollmentService schoolEnrollmentService;
+    private static SchoolEnrollmentService schoolEnrollmentService;
 
 
     @PostMapping("/registerForSchool")

@@ -49,7 +49,7 @@ public class Student {
 
 
     public Student(String id, String studentRegistration, String name, String cpf, String responsible
-            , String celResponsible, County county, School school) {
+            , Long celResponsible, County county, School school) {
         this.id = id;
         this.studentRegistration = studentRegistration;
         this.name = name;

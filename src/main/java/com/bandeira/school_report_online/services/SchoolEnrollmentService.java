@@ -14,12 +14,11 @@ import com.bandeira.school_report_online.repositories.SchoolRepository;
 import com.bandeira.school_report_online.repositories.StudentRepository;
 import com.bandeira.school_report_online.util.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.util.UUID;
 
 public class SchoolEnrollmentService {
+
 
     @Autowired
     private SchoolEnrollmentRepository schoolEnrollmentRepository;
@@ -29,9 +28,6 @@ public class SchoolEnrollmentService {
 
     @Autowired
     private StudentRepository studentRepository;
-
-    @Autowired
-    private JavaMailSender emailSender;
 
 
     public String registerForSchool(SchoolEnrollmentRequest enrollmentRequest) {
@@ -61,15 +57,9 @@ public class SchoolEnrollmentService {
         schoolEnrollmentRepository.save(schoolEnrollment);
 
 
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setFrom("pedro.amp002@gmail.com");
-        message.setTo("user.getEmail()");
-        message.setSubject("SchoolEnrollment...");
-        message.setText("Sua inscrição...");
 
 
-        emailSender.send(message);
+
 
         return "The school registration request has been made,"
                 + " follow The progress via The registered email";
