@@ -6,10 +6,12 @@ import com.bandeira.school_report_online.model.User;
 import com.bandeira.school_report_online.repositories.UserRepository;
 import com.bandeira.school_report_online.util.EmailTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 
@@ -27,7 +29,7 @@ public class UserService {
    private EmailTemplate emailTemplate;
 
 
-    public void createUser(UserRequest userRequest) throws JsonProcessingException {
+    public void createUser(UserRequest userRequest) throws MessagingException, UnsupportedEncodingException {
         if (userRepository.findByEmail(userRequest.email()) != null) {
             throw new EmailException();
         }
