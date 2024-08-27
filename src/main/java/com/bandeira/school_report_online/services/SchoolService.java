@@ -43,6 +43,7 @@ public class SchoolService {
         School school = new School(
                 UUID.randomUUID().toString(),
                 schoolCreateRequest.name(),
+                3000,
                 county
         );
 

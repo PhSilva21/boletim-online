@@ -136,4 +136,13 @@ public class StudentService {
         studentRepository.save(student);
     }
 
+    public Student findByName(String name){
+        var student = studentRepository.findByName(name);
+
+        if(student == null){
+            throw new StudentNotFound();
+        }
+        return student;
+    }
+
 }

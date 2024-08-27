@@ -37,7 +37,7 @@ public class SchoolEnrollmentService {
             throw new SchoolNotFound();
         }
 
-        var student = studentRepository.findByName(enrollmentRequest.nameStudent());
+        var student = studentRepository.findByStudentRegistration(enrollmentRequest.studentRegistration());
 
         if (student == null) {
             throw new StudentNotFound();
@@ -57,10 +57,6 @@ public class SchoolEnrollmentService {
         schoolEnrollmentRepository.save(schoolEnrollment);
 
 
-
-
-
-
         return "The school registration request has been made,"
                 + " follow The progress via The registered email";
     }
@@ -69,7 +65,7 @@ public class SchoolEnrollmentService {
     public SchoolEnrollment findByProtocol(String number) {
         var schoolEnrollment = schoolEnrollmentRepository.findByProtocol(number);
 
-        if (number == null) {
+        if (schoolEnrollment == null) {
             throw new SchoolEnrollmentNotFound();
         }
         return schoolEnrollment;
@@ -90,6 +86,8 @@ public class SchoolEnrollmentService {
         }
 
         schoolEnrollment.setSchool(school);
+
+        schoolEnrollmentRepository.save(schoolEnrollment);
     }
 
 

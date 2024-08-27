@@ -34,9 +34,10 @@ public class School {
     private List<Student> students = new ArrayList<>();
 
 
-    public School(String id, String name, County county) {
+    public School(String id, String name,Integer vacancies, County county) {
         this.id = id;
         this.name = name;
+        this.vacancies = vacancies;
         this.county = county;
     }
 }
