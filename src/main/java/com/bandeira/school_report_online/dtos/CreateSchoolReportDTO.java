@@ -1,17 +1,18 @@
 package com.bandeira.school_report_online.dtos;
 
+import com.bandeira.school_report_online.model.Student;
+
 import java.time.LocalDate;
 
-public record UpdateSchoolReport(
+public record CreateSchoolReportDTO(
+
+        Double absences,
 
 
         String studentRegistration,
 
 
-        LocalDate schoolYear,
-
-
-        Double absences,
+        LocalDate year,
 
 
         Double firstTwoMonthPortuguese,
@@ -107,6 +108,30 @@ public record UpdateSchoolReport(
         Double thirdTwoMonthsBiology,
 
 
-        Double fourthTwoMonthsBiology
+        Double fourthTwoMonthsBiology,
+
+
+         Double finalMediaPortuguese,
+
+
+        Double finalMediaMathematics,
+
+
+        Double finalMediaHistory,
+
+
+        Double finalMediaScience,
+
+
+        Double finalMediaHistoryEnglish,
+
+
+        Double finalMediaArt,
+
+
+        Double finalMediaPhilosophy,
+
+
+        Double finalMediaBiology
 ) {
 }
