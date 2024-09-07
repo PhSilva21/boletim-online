@@ -29,8 +29,7 @@ public class SchoolReportController {
 
 
     @GetMapping("findByStudent")
-    public ResponseEntity<SchoolReport> findByStudent(@RequestParam @Param("Request")
-                                                      FindBySchoolReportDTO request){
+    public ResponseEntity<SchoolReport> findByStudent(@RequestBody FindBySchoolReportDTO request){
         var response = schoolReportService.findByStudent(request);
         return ResponseEntity.ok().body(response);
     }

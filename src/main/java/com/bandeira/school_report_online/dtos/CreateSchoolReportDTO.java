@@ -2,11 +2,12 @@ package com.bandeira.school_report_online.dtos;
 
 import com.bandeira.school_report_online.model.Student;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record CreateSchoolReportDTO(
 
-        Double absences,
+        Integer absences,
 
 
         String studentRegistration,
@@ -15,123 +16,99 @@ public record CreateSchoolReportDTO(
         LocalDate year,
 
 
-        Double firstTwoMonthPortuguese,
+        BigDecimal firstTwoMonthPortuguese,
 
 
-        Double secondTwoMonthsPortuguese,
+        BigDecimal secondTwoMonthsPortuguese,
 
 
-        Double thirdTwoMonthsPortuguese,
+        BigDecimal thirdTwoMonthsPortuguese,
 
 
-        Double fourthTwoMonthsPortuguese,
+        BigDecimal fourthTwoMonthsPortuguese,
 
 
-        Double firstTwoMonthsMathematics,
+        BigDecimal firstTwoMonthsMathematics,
 
 
-        Double secondTwoMonthsMathematics,
+        BigDecimal secondTwoMonthsMathematics,
 
 
-        Double thirdTwoMonthsMathematics,
+        BigDecimal thirdTwoMonthsMathematics,
 
 
-        Double fourthTwoMonthsMathematics,
+        BigDecimal fourthTwoMonthsMathematics,
 
 
-        Double firstTwoMonthsHistory,
+        BigDecimal firstTwoMonthsHistory,
 
 
-        Double secondTwoMonthsHistory,
+        BigDecimal secondTwoMonthsHistory,
 
 
-        Double thirdTwoMonthsHistory,
+        BigDecimal thirdTwoMonthsHistory,
 
 
-        Double fourthTwoMonthsHistory,
+        BigDecimal fourthTwoMonthsHistory,
 
 
-        Double firstTwoMonthsScience,
+        BigDecimal firstTwoMonthsScience,
 
 
-        Double secondTwoMonthsScience,
+        BigDecimal secondTwoMonthsScience,
 
 
-        Double thirdTwoMonthsScience,
+        BigDecimal thirdTwoMonthsScience,
 
 
-        Double fourthTwoMonthsScience,
+        BigDecimal fourthTwoMonthsScience,
 
 
-        Double firstTwoMonthsEnglish,
+        BigDecimal firstTwoMonthsEnglish,
 
 
-        Double secondTwoMonthsEnglish,
+        BigDecimal secondTwoMonthsEnglish,
 
 
-        Double thirdTwoMonthsEnglish,
+        BigDecimal thirdTwoMonthsEnglish,
 
 
-        Double fourthTwoMonthsEnglish,
+        BigDecimal fourthTwoMonthsEnglish,
 
 
-        Double firstTwoMonthsArt,
+        BigDecimal firstTwoMonthsArt,
 
 
-        Double secondTwoMonthsArt,
+        BigDecimal secondTwoMonthsArt,
 
 
-        Double thirdTwoMonthsArt,
+        BigDecimal thirdTwoMonthsArt,
 
 
-        Double fourthTwoMonthsArt,
+        BigDecimal fourthTwoMonthsArt,
 
 
-        Double firstTwoMonthsPhilosophy,
+        BigDecimal firstTwoMonthsPhilosophy,
 
 
-        Double secondTwoMonthsPhilosophy,
+        BigDecimal secondTwoMonthsPhilosophy,
 
 
-        Double thirdTwoMonthsPhilosophy,
+        BigDecimal thirdTwoMonthsPhilosophy,
 
 
-        Double fourthTwoMonthsPhilosophy,
+        BigDecimal fourthTwoMonthsPhilosophy,
 
 
-        Double firstTwoMonthsBiology,
+        BigDecimal firstTwoMonthsBiology,
 
 
-        Double secondTwoMonthsBiology,
+        BigDecimal secondTwoMonthsBiology,
 
 
-        Double thirdTwoMonthsBiology,
+        BigDecimal thirdTwoMonthsBiology,
 
 
-        Double fourthTwoMonthsBiology,
-
-
-         Double finalMediaPortuguese,
-
-
-        Double finalMediaMathematics,
-
-
-        Double finalMediaHistory,
-
-
-        Double finalMediaScience,
-
-
-        Double finalMediaHistoryEnglish,
-
-
-        Double finalMediaArt,
-
-
-        Double finalMediaPhilosophy,
-
-
-        Double finalMediaBiology
+        BigDecimal fourthTwoMonthsBiology
 ) {
 }

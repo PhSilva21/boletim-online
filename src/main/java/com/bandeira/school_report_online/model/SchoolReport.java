@@ -7,9 +7,10 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,7 +22,7 @@ public class SchoolReport {
     private String id;
 
 
-    private Double absences;
+    private Integer absences;
 
 
     private String nameStudent;
@@ -33,130 +34,125 @@ public class SchoolReport {
     private LocalDate schoolYear;
 
 
-    private Double firstTwoMonthPortuguese;
+    private BigDecimal firstTwoMonthPortuguese;
 
 
-    private Double secondTwoMonthsPortuguese;
+    private BigDecimal secondTwoMonthsPortuguese;
 
 
-    private Double thirdTwoMonthsPortuguese;
+    private BigDecimal thirdTwoMonthsPortuguese;
 
 
-    private Double fourthTwoMonthsPortuguese;
+    private BigDecimal fourthTwoMonthsPortuguese;
 
 
-    private Double firstTwoMonthsMathematics;
+    private BigDecimal firstTwoMonthsMathematics;
 
 
-    private Double secondTwoMonthsMathematics;
+    private BigDecimal secondTwoMonthsMathematics;
 
 
-    private Double thirdTwoMonthsMathematics;
+    private BigDecimal thirdTwoMonthsMathematics;
 
 
-    private Double fourthTwoMonthsMathematics;
+    private BigDecimal fourthTwoMonthsMathematics;
 
 
-    private Double firstTwoMonthsHistory;
+    private BigDecimal firstTwoMonthsHistory;
 
 
-    private Double secondTwoMonthsHistory;
+    private BigDecimal secondTwoMonthsHistory;
 
 
-    private Double thirdTwoMonthsHistory;
+    private BigDecimal thirdTwoMonthsHistory;
 
 
-    private Double fourthTwoMonthsHistory;
+    private BigDecimal fourthTwoMonthsHistory;
 
 
-    private Double firstTwoMonthsScience;
+    private BigDecimal firstTwoMonthsScience;
 
 
-    private Double secondTwoMonthsScience;
+    private BigDecimal secondTwoMonthsScience;
 
 
-    private Double thirdTwoMonthsScience;
+    private BigDecimal thirdTwoMonthsScience;
 
 
-    private Double fourthTwoMonthsScience;
+    private BigDecimal fourthTwoMonthsScience;
 
 
-    private Double firstTwoMonthsEnglish;
+    private BigDecimal firstTwoMonthsEnglish;
 
 
-    private Double secondTwoMonthsEnglish;
+    private BigDecimal secondTwoMonthsEnglish;
 
 
-    private Double thirdTwoMonthsEnglish;
+    private BigDecimal thirdTwoMonthsEnglish;
 
 
-    private Double fourthTwoMonthsEnglish;
+    private BigDecimal fourthTwoMonthsEnglish;
 
 
-    private Double firstTwoMonthsArt;
+    private BigDecimal firstTwoMonthsArt;
 
 
-    private Double secondTwoMonthsArt;
+    private BigDecimal secondTwoMonthsArt;
 
 
-    private Double thirdTwoMonthsArt;
+    private BigDecimal thirdTwoMonthsArt;
 
 
-    private Double fourthTwoMonthsArt;
+    private BigDecimal fourthTwoMonthsArt;
 
 
-    private Double firstTwoMonthsPhilosophy;
+    private BigDecimal firstTwoMonthsPhilosophy;
 
 
-    private Double secondTwoMonthsPhilosophy;
+    private BigDecimal secondTwoMonthsPhilosophy;
 
 
-    private Double thirdTwoMonthsPhilosophy;
+    private BigDecimal thirdTwoMonthsPhilosophy;
 
 
-    private Double fourthTwoMonthsPhilosophy;
+    private BigDecimal fourthTwoMonthsPhilosophy;
 
 
-    private Double firstTwoMonthsBiology;
+    private BigDecimal firstTwoMonthsBiology;
 
 
-    private Double secondTwoMonthsBiology;
+    private BigDecimal secondTwoMonthsBiology;
 
 
-    private Double thirdTwoMonthsBiology;
+    private BigDecimal thirdTwoMonthsBiology;
 
 
-    private Double fourthTwoMonthsBiology;
+    private BigDecimal fourthTwoMonthsBiology;
 
 
-    private Double finalMediaPortuguese;
+    private BigDecimal finalMediaPortuguese;
 
 
-    private Double finalMediaMathematics;
+    private BigDecimal finalMediaMathematics;
 
 
-    private Double finalMediaHistory;
+    private BigDecimal finalMediaHistory;
 
 
-    private Double finalMediaScience;
+    private BigDecimal finalMediaScience;
 
 
-    private Double finalMediaEnglish;
+    private BigDecimal finalMediaEnglish;
 
 
-    private Double finalMediaArt;
+    private BigDecimal finalMediaArt;
 
 
-    private Double finalMediaPhilosophy;
+    private BigDecimal finalMediaPhilosophy;
 
 
-    private Double finalMediaBiology;
+    private BigDecimal finalMediaBiology;
 
 
-    public SchoolReport(String id, LocalDate schoolYear, String nameStudent, String studentRegistration) {
-        this.schoolYear = schoolYear;
-        this.id = id;
-        this.nameStudent = nameStudent;
-        this.studentRegistration = studentRegistration;
-    }
+
 }
