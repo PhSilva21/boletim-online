@@ -12,6 +12,7 @@ import com.bandeira.school_report_online.model.Student;
 import com.bandeira.school_report_online.repositories.SchoolReportRepository;
 import com.bandeira.school_report_online.repositories.StudentRepository;
 import com.bandeira.school_report_online.util.RandomString;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -74,7 +75,8 @@ class SchoolReportServiceTest {
 
 
         @Test
-        void ccreateSchool(){
+        @DisplayName("You must create the school report with successes")
+        void YouMustCreateTheSchoolReportWithSuccesses(){
             doReturn(student)
                     .when(studentRepository)
                     .findByStudentRegistration(createSchoolReportDTO.studentRegistration());
@@ -133,6 +135,17 @@ class SchoolReportServiceTest {
             assertEquals(BigDecimal.valueOf(0.0), schoolReportCaptured.getFinalMediaBiology());
 
         }
+
+        @Test
+        @DisplayName("You should make an exception when you can't find the student")
+        void YouShouldMakeAnExceptionWhenYouCantFindTheStudent(){
+            doReturn(null)
+                    .when(studentRepository)
+                    .findByStudentRegistration(createSchoolReportDTO.studentRegistration());
+
+            assertThrows(StudentNotFound.class,
+                    () -> schoolReportService.createSchoolReport(createSchoolReportDTO));
+        }
     }
 
 
@@ -162,7 +175,8 @@ class SchoolReportServiceTest {
                 LocalDate.of(2024,9,05));
 
     @Test
-    void findBysaStudent() {
+    @DisplayName("It should return the school report successfully")
+    void ItShouldReturnTheSchoolReportSuccessfully() {
         student.getSchoolReports().add(schoolReport);
         doReturn(student)
                 .when(studentRepository)
@@ -180,7 +194,8 @@ class SchoolReportServiceTest {
         }
 
         @Test
-        void erroStudent(){
+        @DisplayName("You should make an exception when you can't find the student")
+        void YouShouldMakeAnExceptionWhenYouCantFindTheStudent(){
         doReturn(null)
                 .when(studentRepository)
                 .findByStudentRegistration(findBySchoolReportDTO.studentRegistration());
@@ -190,11 +205,11 @@ class SchoolReportServiceTest {
         }
 
         @Test
-        void erroFindSchool(){
+        @DisplayName("You should throw an exception when you can't find the school report")
+        void YouShouldThrowAnExceptionWhenYouCantFindSchoolReport(){
         doReturn(student)
                 .when(studentRepository)
                 .findByStudentRegistration(findBySchoolReportDTO.studentRegistration());
-
 
 
         assertThrows(SchoolReportNotFoundException.class,
@@ -240,7 +255,8 @@ class SchoolReportServiceTest {
         }
 
         @Test
-        void uppdateSchoolReport() {
+        @DisplayName("Must update school report successfully")
+        void MustUpdateSchoolReportSuccessfully() {
             doReturn(student)
                     .when(studentRepository)
                     .findByStudentRegistration(updateSchoolReport.studentRegistration());
@@ -331,7 +347,8 @@ class SchoolReportServiceTest {
         }
 
         @Test
-        void erroStudent(){
+        @DisplayName("You should make an exception when you can't find the student")
+        void YouShouldMakeAnExceptionWhenYouCantFindTheStudent(){
             doReturn(null)
                     .when(studentRepository)
                     .findByStudentRegistration(updateSchoolReport.studentRegistration());
