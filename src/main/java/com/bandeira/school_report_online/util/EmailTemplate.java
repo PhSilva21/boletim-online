@@ -18,7 +18,7 @@ public class EmailTemplate {
     @Autowired
     private JavaMailSender emailSender;
 
-    public String setFrom = "pedro.amp002@gmail.com";
+    public String setFrom = "pedro.amp003@gmail.com";
     public String senderName = "Escola Hipotética";
 
     public void emailSchoolEnrollment(User user) throws MessagingException, UnsupportedEncodingException {

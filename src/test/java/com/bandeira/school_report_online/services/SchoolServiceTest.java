@@ -12,6 +12,7 @@ import com.bandeira.school_report_online.model.Student;
 import com.bandeira.school_report_online.repositories.CountyRepository;
 import com.bandeira.school_report_online.repositories.SchoolRepository;
 import com.bandeira.school_report_online.repositories.StudentRepository;
+import com.bandeira.school_report_online.util.EmailTemplate;
 import com.bandeira.school_report_online.util.RandomString;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -42,6 +43,10 @@ class SchoolServiceTest {
 
     @Mock
     private StudentRepository studentRepository;
+
+    @Mock
+    private EmailTemplate emailTemplate;
+
     @Mock
     private SchoolRepository schoolRepository;
 
