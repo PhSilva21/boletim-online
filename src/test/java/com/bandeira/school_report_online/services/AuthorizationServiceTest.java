@@ -1,6 +1,6 @@
 package com.bandeira.school_report_online.services;
 
-import com.bandeira.school_report_online.exceptions.EmailException;
+import com.bandeira.school_report_online.exceptions.EmailAlreadyExistsException;
 import com.bandeira.school_report_online.model.User;
 import com.bandeira.school_report_online.model.UserRole;
 import com.bandeira.school_report_online.repositories.UserRepository;
@@ -55,11 +55,11 @@ class AuthorizationServiceTest {
         @Test
         @DisplayName("Should throw exception when not finding user")
         void ShouldThrowExceptionWhenNotFindingUser() {
-            doThrow(new EmailException(""))
+            doThrow(new EmailAlreadyExistsException(""))
                     .when(userRepository)
                     .findByEmail(user.getEmail());
 
-            assertThrows(EmailException.class,
+            assertThrows(EmailAlreadyExistsException.class,
                     () -> authorizationService.loadUserByUsername(user.getUsername()));
         }
     }

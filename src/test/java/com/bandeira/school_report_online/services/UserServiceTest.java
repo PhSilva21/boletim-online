@@ -204,7 +204,7 @@ class UserServiceTest {
                 , UserRole.USER);
 
         UpdatePasswordDTO updatePasswordDTO = new UpdatePasswordDTO(UUID.randomUUID().toString(),"12142151dsd"
-        , "71ye2e62e2", "71ye2e62e2");
+                , "71ye2e62e2", "71ye2e62e2");
 
         @Test
         @DisplayName("must update password successfully")
