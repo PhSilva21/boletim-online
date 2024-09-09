@@ -30,8 +30,8 @@ public class SchoolController {
 
     @PostMapping("/enrollStudent")
     public ResponseEntity<String> enrollStudent(@RequestBody EnrollStudent enrollStudent) {
-        var response = schoolService.enrollStudent(enrollStudent);
-        return ResponseEntity.ok().body(response);
+        schoolService.enrollStudent(enrollStudent);
+        return ResponseEntity.ok().build();
     }
 
 
@@ -48,10 +48,4 @@ public class SchoolController {
         return ResponseEntity.ok().body(response);
     }
 
-
-    @GetMapping("/findByName")
-    public ResponseEntity<School> findByName(@RequestParam @Param("name") String name){
-        var response = schoolService.findByName(name);
-        return ResponseEntity.ok().body(response);
-    }
 }

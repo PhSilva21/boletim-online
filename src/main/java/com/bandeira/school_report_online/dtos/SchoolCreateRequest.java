@@ -7,6 +7,7 @@ public record SchoolCreateRequest(
 
         String name,
 
+        Integer vacancies,
 
         String countyName
 

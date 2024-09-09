@@ -5,7 +5,10 @@ public record SchoolUpdateDTO(
         String id,
 
 
-        String name,
+        String nameSchool,
+
+
+        Integer vacancies,
 
 
         String nameCounty

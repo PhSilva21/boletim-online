@@ -28,7 +28,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -134,6 +134,12 @@ class SchoolReportServiceTest {
             assertEquals(BigDecimal.valueOf(0.0), schoolReportCaptured.getFinalMediaPhilosophy());
             assertEquals(BigDecimal.valueOf(0.0), schoolReportCaptured.getFinalMediaBiology());
 
+            verify(studentRepository, times(1))
+                    .findByStudentRegistration(createSchoolReportDTO.studentRegistration());
+            verify(studentRepository, times(1))
+                    .save(student);
+            verify(schoolReportRepository, times(1)).save(schoolReportArgumentCaptor.capture());
+
         }
 
         @Test
@@ -145,9 +151,14 @@ class SchoolReportServiceTest {
 
             assertThrows(StudentNotFound.class,
                     () -> schoolReportService.createSchoolReport(createSchoolReportDTO));
+
+            verify(studentRepository, times(1))
+                    .findByStudentRegistration(createSchoolReportDTO.studentRegistration());
+            verify(studentRepository, times(1))
+                    .save(student);
+            verify(schoolReportRepository, times(0)).save(schoolReportArgumentCaptor.capture());
         }
     }
-
 
     @Nested
     class findByStudent {
@@ -344,7 +355,13 @@ class SchoolReportServiceTest {
                     , updateSchoolReport.secondTwoMonthsBiology(), updateSchoolReport.thirdTwoMonthsBiology()
                     , updateSchoolReport.fourthTwoMonthsBiology()).divide(BigDecimal.valueOf(4))
                             .setScale(1, RoundingMode.UP), schoolReportCaptured.getFinalMediaBiology());
+
+            verify(studentRepository, times(1))
+                    .findByStudentRegistration(updateSchoolReport.studentRegistration());
+            verify(schoolReportRepository, times(1)).save(schoolReport);
         }
+
+
 
         @Test
         @DisplayName("You should make an exception when you can't find the student")
@@ -355,6 +372,10 @@ class SchoolReportServiceTest {
 
             assertThrows(StudentNotFound.class,
                     () -> schoolReportService.updateSchoolReport(updateSchoolReport));
+
+            verify(studentRepository, times(1))
+                    .findByStudentRegistration(updateSchoolReport.studentRegistration());
+            verify(schoolReportRepository, times(0)).save(schoolReport);
         }
     }
 }

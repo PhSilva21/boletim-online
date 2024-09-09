@@ -43,7 +43,7 @@ public class SchoolService {
         School school = new School(
                 UUID.randomUUID().toString(),
                 schoolCreateRequest.name(),
-                3000,
+                schoolCreateRequest.vacancies(),
                 county
         );
 
@@ -53,7 +53,7 @@ public class SchoolService {
     }
 
 
-    public String enrollStudent(EnrollStudent enrollStudent){
+    public void enrollStudent(EnrollStudent enrollStudent){
         var student = studentRepository.findByStudentRegistration(enrollStudent.studentRegistration());
 
         if(student == null){
@@ -74,20 +74,25 @@ public class SchoolService {
 
         schoolRepository.save(school);
 
-        return "Student successfully enrolled";
     }
 
 
     public void updateSchool(SchoolUpdateDTO schoolUpdateDTO) {
         var school = schoolRepository.findById(schoolUpdateDTO.id()).orElseThrow(SchoolNotFound::new);
 
-        if (schoolUpdateDTO.name() != null) {
-            school.setName(schoolUpdateDTO.name());
+        if (schoolUpdateDTO.nameSchool() != null) {
+            school.setName(schoolUpdateDTO.nameSchool());
+        }
+
+        if (schoolUpdateDTO.vacancies() != null) {
+            school.setVacancies(schoolUpdateDTO.vacancies());
         }
 
         if (schoolUpdateDTO.nameCounty() != null) {
-            school.setCounty(countyRepository.findByName(schoolUpdateDTO.name()));
+            school.setCounty(countyRepository.findByName(schoolUpdateDTO.nameCounty()));
         }
+
+        schoolRepository.save(school);
     }
 
 
@@ -106,14 +111,14 @@ public class SchoolService {
     public List<School> findByCounty(String countyName){
         var county = countyRepository.findByName(countyName);
 
+        if(county == null){
+            throw new CountyNotFound();
+        }
+
         return county.getSchools().stream().filter(
                 s -> s.getCounty().equals(county)).collect(Collectors.toList());
     }
 
 
-
-    public School findByName(String name){
-        return schoolRepository.findByName(name);
-    }
 
 }
