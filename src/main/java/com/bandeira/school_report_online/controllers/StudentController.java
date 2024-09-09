@@ -63,11 +63,4 @@ public class StudentController {
         return ResponseEntity.ok().build();
     }
 
-
-    @PostMapping("/updateSchool")
-    public ResponseEntity<Void> updateSchool(UpdateStudentSchool updateStudentSchool) {
-        studentService.updateSchool(updateStudentSchool);
-        return ResponseEntity.ok().build();
-    }
-
 }

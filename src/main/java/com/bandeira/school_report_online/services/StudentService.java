@@ -33,11 +33,11 @@ public class StudentService {
     public StudentCreateResponse createStudent(StudentCreateRequest studentCreateRequest){
         var school = schoolRepository.findByName(studentCreateRequest.schoolName());
 
-        var county = countyRepository.findByName(studentCreateRequest.countyName());
-
         if(school == null) {
             throw new SchoolNotFound();
         }
+        var county = countyRepository.findByName(studentCreateRequest.countyName());
+
         if(county == null){
             throw new CountyNotFound();
         }
@@ -66,26 +66,16 @@ public class StudentService {
 
 
     public List<Student> findByCounty(String countyName) {
-        var county = countyRepository.findByName(countyName);
-
-        if(county == null){
-            throw new CountyNotFound();
-        }
 
         return studentRepository.findAll().stream()
-                .filter(s -> s.getCounty().getName().equals(county.getName())).collect(Collectors.toList());
+                .filter(s -> s.getCounty().getName().equals(countyName)).collect(Collectors.toList());
     }
 
 
     public List<Student> findBySchool(String schoolName) {
-        var school = schoolRepository.findByName(schoolName);
-
-        if(school == null){
-            throw new CountyNotFound();
-        }
 
         return studentRepository.findAll().stream()
-                .filter(s -> s.getSchool().getName().equals(school.getName())).collect(Collectors.toList());
+                .filter(s -> s.getSchool().getName().equals(schoolName)).collect(Collectors.toList());
     }
 
 
@@ -120,29 +110,5 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-
-    public void updateSchool(UpdateStudentSchool updateStudentSchool){
-
-        var student = studentRepository.findById(updateStudentSchool.id()).orElseThrow(StudentNotFound::new);
-
-        var county = countyRepository.findByName(updateStudentSchool.nameSchool());
-
-        if(county == null){
-            throw new CountyNotFound();
-        }
-
-        student.setCounty(county);
-
-        studentRepository.save(student);
-    }
-
-    public Student findByName(String name){
-        var student = studentRepository.findByName(name);
-
-        if(student == null){
-            throw new StudentNotFound();
-        }
-        return student;
-    }
 
 }
